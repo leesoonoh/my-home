@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-white text-stone-800 antialiased selection:bg-brand-sand selection:text-stone-900;
+    font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+  }
+}
+
+.font-gowun {
+  font-family: 'Gowun Batang', 'Noto Serif KR', serif;
+}
+
+.font-serif-kr {
+  font-family: 'Noto Serif KR', 'Gowun Batang', serif;
+}
+
+.font-eng {
+  font-family: 'Montserrat', sans-serif;
+}

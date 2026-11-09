@@ -1,0 +1,1692 @@
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>아미유 헤어 (AMEU HAIR) | 미아사거리점 & 성신여대점</title>
+  <meta name="description" content="고객 맞춤 프리미엄 헤어 살롱 아미유(AMEU HAIR). 미아사거리점 성신여대점 첫방문 50% 할인 이벤트 및 네이버 실시간 예약.">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              sand: '#DFD7CD',
+              beige: '#EFECE6',
+              gold: '#C5A880',
+              deep: '#4A3B32',
+              dark: '#1C1917',
+              charcoal: '#0C0A09'
+            }
+          },
+          fontFamily: {
+            eng: ['Montserrat', 'sans-serif'],
+            gowun: ['Gowun Batang', 'Noto Serif KR', 'serif'],
+            serifkr: ['Noto Serif KR', 'Gowun Batang', 'serif']
+          }
+        }
+      }
+    };
+  </script>
+
+  <!-- Google Fonts & FontAwesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Noto+Serif+KR:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+    body {
+      font-family: 'Pretendard', -apple-system, sans-serif;
+    }
+    .font-gowun {
+      font-family: 'Gowun Batang', 'Noto Serif KR', serif;
+    }
+    .font-serif-kr {
+      font-family: 'Noto Serif KR', 'Gowun Batang', serif;
+    }
+    .font-eng {
+      font-family: 'Montserrat', sans-serif;
+    }
+    .utility-bar {
+      background-color: #DFD7CD;
+    }
+    /* Volumetric Studio Shaders & Beams */
+    .volumetric-light-beam {
+      background: linear-gradient(to bottom, rgba(230,240,255,0.45) 0%, rgba(230,240,255,0.18) 35%, rgba(230,240,255,0.03) 75%, transparent 100%);
+      clip-path: polygon(48% 0%, 52% 0%, 96% 100%, 4% 100%);
+      filter: blur(8px);
+      mix-blend-mode: screen;
+      pointer-events: none;
+    }
+    .volumetric-core-beam {
+      background: linear-gradient(to bottom, rgba(255,255,255,0.85) 0%, rgba(230,240,255,0.3) 40%, transparent 100%);
+      clip-path: polygon(49% 0%, 51% 0%, 75% 100%, 25% 100%);
+      filter: blur(4px);
+      mix-blend-mode: screen;
+      pointer-events: none;
+    }
+    /* Glow pulse for logo */
+    @keyframes glowPulse {
+      0%, 100% { filter: drop-shadow(0 0 25px rgba(255, 255, 255, 0.7)); transform: scale(1); }
+      50% { filter: drop-shadow(0 0 50px rgba(223, 215, 205, 0.95)); transform: scale(1.02); }
+    }
+    .hero-lead-logo {
+      animation: glowPulse 4.5s infinite ease-in-out;
+    }
+  
+    /* Interactive Hairstyle Rail Styles */
+    .rail-perspective-stage {
+      perspective: 1200px;
+      transform-style: preserve-3d;
+    }
+    .rail-hanger-rod {
+      background: linear-gradient(180deg, #666 0%, #eee 40%, #bbb 60%, #333 100%);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.6), 0 0 20px rgba(197, 168, 128, 0.2);
+    }
+    .rail-item-card {
+      transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.45s ease, opacity 0.35s ease;
+      transform-origin: top center;
+      transform-style: preserve-3d;
+      will-change: transform;
+    }
+    .rail-item-card.resting {
+      transform: perspective(1100px) rotateY(-62deg) scale(0.92);
+      opacity: 0.75;
+      filter: brightness(0.85);
+    }
+    .rail-item-card.active, .rail-item-card:hover {
+      transform: perspective(1100px) rotateY(0deg) scale(1.06) translateZ(35px);
+      opacity: 1;
+      filter: brightness(1.05);
+      z-index: 40 !important;
+      box-shadow: 0 20px 45px -10px rgba(0,0,0,0.8), 0 0 35px rgba(197, 168, 128, 0.35);
+    }
+    .rail-scroll-track::-webkit-scrollbar {
+      display: none;
+    }
+    .rail-scroll-track {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+</head>
+<body class="bg-white text-stone-800 antialiased selection:bg-brand-sand selection:text-stone-900">
+
+  <!-- ==================== 0. FIRST VISIT EVENT POPUP ==================== -->
+  <div id="firstVisitPopup" class="fixed inset-0 z-50 bg-black/75 backdrop-blur-sm hidden items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-xl w-full overflow-hidden shadow-2xl border border-stone-200 animate-fade-in relative flex flex-col max-h-[92vh]">
+      
+      <!-- Popup Header Bar -->
+      <div class="bg-stone-900 text-white px-6 py-4 flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <span class="w-2.5 h-2.5 rounded-full bg-lime-400 animate-ping"></span>
+          <span class="font-bold text-sm font-eng tracking-wider text-lime-400">AMEU HAIR SPECIAL EVENT</span>
+        </div>
+        <button onclick="closeEventPopup()" class="text-stone-400 hover:text-white text-lg">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <!-- Popup Tab Selection -->
+      <div class="flex border-b border-stone-200 bg-stone-100">
+        <button 
+          id="tabBtnMia" 
+          onclick="switchEventTab('mia')" 
+          class="flex-1 py-3 text-xs sm:text-sm font-bold border-b-2 border-stone-900 bg-white text-stone-900 flex items-center justify-center gap-1.5 transition-all"
+        >
+          <i class="fa-solid fa-scissors text-emerald-600"></i>
+          <span>미아사거리점 첫방문 50%</span>
+        </button>
+        <button 
+          id="tabBtnSungshin" 
+          onclick="switchEventTab('sungshin')" 
+          class="flex-1 py-3 text-xs sm:text-sm font-bold border-b-2 border-transparent text-stone-500 hover:text-stone-800 flex items-center justify-center gap-1.5 transition-all"
+        >
+          <i class="fa-solid fa-wand-magic-sparkles text-brand-gold"></i>
+          <span>성신여대점 첫방문 50%</span>
+        </button>
+      </div>
+
+      <!-- Popup Scrollable Content -->
+      <div class="overflow-y-auto p-5 sm:p-6 space-y-4">
+        
+        <!-- Tab 1: 미아사거리점 이벤트 포스터 -->
+        <div id="tabContentMia" class="space-y-4">
+          <div class="rounded-2xl overflow-hidden shadow-md border border-stone-200 bg-stone-100 max-h-[50vh] flex items-center justify-center">
+            <img 
+              src="event-mia.jpg" 
+              alt="아미유 헤어 미아사거리점 첫방문 50% 이벤트" 
+              class="w-full h-auto max-h-[50vh] object-contain"
+            />
+          </div>
+          <div class="p-4 rounded-2xl bg-stone-50 border border-stone-200 text-center">
+            <p class="font-gowun text-sm text-stone-800 font-bold">
+              "당신의 첫 선택, 가장 빛나는 변화"
+            </p>
+            <p class="text-xs text-stone-500 mt-1">
+              아미유 헤어 미아사거리점 첫방문 고객 대상 커트 · 펌 · 염색 <strong>50% 할인 혜택</strong>
+            </p>
+          </div>
+          <a 
+            href="https://map.naver.com/p/entry/place/1809226710?placePath=%2Fstylist%3Ffrom%3Dmap%26fromPanelNum%3D1%26additionalHeight%3D76%26timestamp%3D202611091600%26locale%3Dko%26svcName%3Dmap_pcv5&c=15.00,0,0,0,dh" 
+            target="_blank" 
+            class="w-full py-4 rounded-xl bg-emerald-600 text-white font-bold text-sm text-center hover:bg-emerald-700 transition-colors flex items-center justify-center gap-2 shadow-md"
+          >
+            <i class="fa-solid fa-calendar-check"></i>
+            <span>미아사거리점 50% 할인 예약 바로가기</span>
+          </a>
+        </div>
+
+        <!-- Tab 2: 성신여대점 이벤트 포스터 -->
+        <div id="tabContentSungshin" class="hidden space-y-4">
+          <div class="rounded-2xl overflow-hidden shadow-md border border-stone-200 bg-stone-100 max-h-[50vh] flex items-center justify-center">
+            <img 
+              src="event-sungshin.jpg" 
+              alt="아미유 헤어 성신여대점 첫방문 50% 이벤트" 
+              class="w-full h-auto max-h-[50vh] object-contain"
+            />
+          </div>
+          <div class="p-4 rounded-2xl bg-stone-50 border border-stone-200 text-center">
+            <p class="font-gowun text-sm text-stone-800 font-bold">
+              아미유 헤어 (AMEU HAIR) 성신여대점 첫방문 50% EVENT
+            </p>
+            <p class="text-xs text-stone-600 mt-1">
+              CUT <strong>13,900원</strong> · PERM <strong>40,000원</strong> · COLOR <strong>40,000원</strong> · 열펌 <strong>65,000원</strong>
+            </p>
+          </div>
+          <a 
+            href="https://m.place.naver.com/hairshop/1423704026/stylist?entry=plt&utm_source=ig&utm_medium=social&utm_content=link_in_bio" 
+            target="_blank" 
+            class="w-full py-4 rounded-xl bg-stone-900 text-lime-400 font-bold text-sm text-center hover:bg-stone-800 transition-colors flex items-center justify-center gap-2 shadow-md"
+          >
+            <i class="fa-solid fa-calendar-check"></i>
+            <span>성신여대점 50% 할인 예약 바로가기</span>
+          </a>
+        </div>
+
+      </div>
+
+      <!-- Popup Footer Actions -->
+      <div class="p-4 bg-stone-100 border-t border-stone-200 flex items-center justify-between text-xs text-stone-600">
+        <label class="flex items-center gap-2 cursor-pointer select-none">
+          <input type="checkbox" id="dontShowToday" class="rounded text-stone-900 focus:ring-0">
+          <span>오늘 하루 보지 않기</span>
+        </label>
+        <button onclick="closeEventPopup()" class="px-4 py-1.5 rounded-lg bg-stone-300 hover:bg-stone-400 text-stone-800 font-medium">
+          닫기
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- ==================== 1. TOP UTILITY BAR (준오헤어 스타일) ==================== -->
+  <div class="utility-bar text-stone-700 text-[11px] font-medium border-b border-stone-300/60 hidden sm:block">
+    <div class="max-w-7xl mx-auto px-6 h-9 flex items-center justify-between">
+      <div class="flex items-center gap-6">
+        <a href="#" class="flex items-center gap-1.5 hover:text-stone-950 font-bold">
+          <i class="fa-solid fa-house text-xs"></i>
+          <span>HOME</span>
+        </a>
+        <div class="h-3 w-[1px] bg-stone-400"></div>
+        <a href="#about" class="hover:text-stone-950 font-semibold tracking-wider font-eng">AMEU HAIR</a>
+        <a href="#salon" class="hover:text-stone-950 text-stone-600 font-eng">SALON LOCATIONS</a>
+        <a href="#stylebook" class="hover:text-stone-950 text-stone-600 font-eng">STYLE BOOK</a>
+        <a href="#membership" class="hover:text-stone-950 text-stone-600 font-eng">MEMBERSHIP</a>
+      </div>
+
+      <div class="flex items-center gap-5 text-stone-600">
+        <button onclick="openEventPopup()" class="text-rose-700 font-bold hover:underline flex items-center gap-1">
+          <span class="w-1.5 h-1.5 rounded-full bg-rose-600 animate-pulse"></span>
+          <span>첫방문 50% 이벤트</span>
+        </button>
+        <div class="h-3 w-[1px] bg-stone-400"></div>
+        <div class="flex items-center gap-2">
+          <i class="fa-solid fa-location-dot text-brand-brown"></i>
+          <div class="flex items-center gap-3">
+              <span class="font-bold text-stone-900">미아사거리점 <a href="tel:02-980-0951" class="text-stone-600 hover:text-stone-950 font-normal">02-980-0951</a></span>
+              <span class="text-stone-400">|</span>
+              <span class="font-bold text-stone-900">성신여대점 <a href="tel:02-922-0111" class="text-stone-600 hover:text-stone-950 font-normal">02-922-0111</a></span>
+            </div>
+        </div>
+        <div class="h-3 w-[1px] bg-stone-400"></div>
+        <a href="javascript:openReservationModal()" class="hover:text-stone-950 flex items-center gap-1 font-bold text-brand-brown">
+          <i class="fa-regular fa-calendar-check"></i>
+          <span>네이버 실시간 예약</span>
+        </a>
+        <div class="h-3 w-[1px] bg-stone-400"></div>
+        <div class="flex items-center gap-1 text-[10px] text-stone-500 font-eng">
+          <span>KOR</span>
+          <i class="fa-solid fa-chevron-down text-[8px]"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ==================== 2. MAIN HEADER ==================== -->
+  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-stone-200 transition-all">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex flex-col md:flex-row items-center justify-between gap-4">
+      
+      <!-- 큼직한 로고 -->
+      <a href="#" class="flex items-center gap-4 py-1 group">
+        <img 
+          src="logo2.png" 
+          alt="아미유 헤어 살롱 로고" 
+          class="h-16 md:h-20 w-auto object-contain transition-transform duration-300 group-hover:scale-105 drop-shadow-sm"
+        />
+      </a>
+
+      <!-- Main Navigation Links -->
+      <nav class="hidden md:flex items-center gap-8 lg:gap-11 font-eng text-[13px] font-bold tracking-widest text-stone-800 uppercase">
+        <a href="#about" class="hover:text-brand-gold transition-colors py-1 relative group">
+          ABOUT
+          <span class="absolute bottom-0 left-0 w-0 h-[2px] bg-stone-900 transition-all duration-300 group-hover:w-full"></span>
+        </a>
+        <a href="#salon" class="hover:text-brand-gold transition-colors py-1 relative group">
+          SALON
+          <span class="absolute bottom-0 left-0 w-0 h-[2px] bg-stone-900 transition-all duration-300 group-hover:w-full"></span>
+        </a>
+        <a href="#interior" class="hover:text-brand-gold transition-colors py-1 relative group">
+          INTERIOR
+          <span class="absolute bottom-0 left-0 w-0 h-[2px] bg-stone-900 transition-all duration-300 group-hover:w-full"></span>
+        </a>
+        <a href="#stylebook" class="hover:text-brand-gold transition-colors py-1 relative group">
+          STYLE BOOK
+          <span class="absolute bottom-0 left-0 w-0 h-[2px] bg-stone-900 transition-all duration-300 group-hover:w-full"></span>
+        </a>
+        <a href="#membership" class="hover:text-brand-gold transition-colors py-1 relative group">
+          MEMBERSHIP
+          <span class="absolute bottom-0 left-0 w-0 h-[2px] bg-stone-900 transition-all duration-300 group-hover:w-full"></span>
+        </a>
+        <a href="javascript:openReservationModal()" class="text-brand-brown hover:text-stone-900 transition-colors py-1 font-extrabold flex items-center gap-1.5">
+          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
+          <span>RESERVATION</span>
+        </a>
+      </nav>
+
+      <!-- Right Action -->
+      <div class="hidden lg:flex items-center gap-3">
+        <button onclick="openEventPopup()" class="px-4 py-2 rounded-full border border-rose-300 bg-rose-50 text-rose-700 text-xs font-bold hover:bg-rose-100 transition-all flex items-center gap-1.5">
+          <i class="fa-solid fa-gift text-xs"></i>
+          <span>첫방문 50%</span>
+        </button>
+        <button onclick="openReservationModal()" class="px-5 py-2.5 rounded-full bg-stone-900 text-white font-eng text-xs tracking-wider font-semibold hover:bg-stone-800 transition-all flex items-center gap-2 shadow-sm">
+          <i class="fa-regular fa-calendar-check text-brand-gold"></i>
+          <span>실시간 예약하기</span>
+        </button>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <div class="md:hidden flex items-center justify-between w-full border-t border-stone-100 pt-3">
+        <button onclick="openEventPopup()" class="px-3 py-1 rounded-full bg-rose-100 text-rose-700 text-xs font-bold">
+          🎉 첫방문 50%
+        </button>
+        <button onclick="openReservationModal()" class="px-4 py-1.5 rounded-full bg-stone-900 text-white text-xs font-bold">
+          실시간 예약
+        </button>
+      </div>
+    </div>
+  </header>
+
+
+  <!-- ==================== 3. HERO SECTION (세련된 하이엔드 에디토리얼 스타일) ==================== -->
+  <section class="relative w-full min-h-[760px] lg:min-h-[850px] bg-black overflow-hidden flex items-center justify-center">
+    
+    <!-- 3D Room Studio Environment -->
+    <div id="studioRoom" class="absolute inset-0 overflow-hidden bg-black pointer-events-none transition-opacity duration-700">
+      
+      <!-- Back Wall -->
+      <div class="absolute inset-0" style="clip-path: polygon(22% 10%, 78% 10%, 78% 72%, 22% 72%); background: linear-gradient(to bottom, rgba(20,20,22,1) 0%, rgba(8,8,10,1) 100%);"></div>
+      
+      <!-- Ceiling -->
+      <div class="absolute inset-0" style="clip-path: polygon(0% 0%, 100% 0%, 78% 10%, 22% 10%); background: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.85) 100%);"></div>
+      
+      <!-- Left Wall -->
+      <div class="absolute inset-0" style="clip-path: polygon(0% 0%, 22% 10%, 22% 72%, 0% 100%); background: linear-gradient(to right, rgba(8,8,10,1) 0%, rgba(18,18,20,1) 70%, rgba(26,26,28,1) 100%);"></div>
+      
+      <!-- Right Wall -->
+      <div class="absolute inset-0" style="clip-path: polygon(100% 0%, 78% 10%, 78% 72%, 100% 100%); background: linear-gradient(to left, rgba(8,8,10,1) 0%, rgba(18,18,20,1) 70%, rgba(26,26,28,1) 100%);"></div>
+      
+      <!-- Floor -->
+      <div class="absolute inset-0" style="clip-path: polygon(0% 100%, 100% 100%, 78% 72%, 22% 72%); background: linear-gradient(to top, rgba(15,15,17,1) 0%, rgba(6,6,8,1) 100%);"></div>
+
+      <!-- Studio Ceiling Rig Bar -->
+      <div class="absolute w-full h-[26px] top-[3%] left-0 z-30" style="background: linear-gradient(to bottom, #111 0%, #3a3a3a 30%, #555 50%, #2a2a2a 80%, #000 100%); box-shadow: 0 10px 20px -5px rgba(0,0,0,0.8);"></div>
+
+      <!-- 3 Physical Studio Spotlights on the Ceiling Rig (35%, 50%, 65%) -->
+      <div class="absolute inset-0 z-30 pointer-events-none">
+        <!-- Spotlight 1 (Left 35%) -->
+        <div class="absolute flex flex-col items-center" style="left: 35%; top: 3%; transform: translate(-50%, -4px);">
+          <div class="w-[14px] h-[34px] rounded-sm border border-zinc-900" style="background: linear-gradient(to right, #666, #fff 40%, #999 60%, #333);"></div>
+          <div class="w-[8px] h-[18px] bg-zinc-700 border-x border-black"></div>
+          <div class="w-[54px] h-[58px] rounded-b-2xl border border-black shadow-2xl flex flex-col items-center justify-end p-1" style="background: linear-gradient(to right, #111, #444 50%, #000);">
+            <div id="bulb1" class="w-[36px] h-[12px] rounded-full bg-white shadow-[0_0_20px_8px_rgba(255,255,255,0.9)] transition-all duration-300"></div>
+          </div>
+        </div>
+
+        <!-- Spotlight 2 (Center 50%) -->
+        <div class="absolute flex flex-col items-center" style="left: 50%; top: 3%; transform: translate(-50%, -4px);">
+          <div class="w-[14px] h-[34px] rounded-sm border border-zinc-900" style="background: linear-gradient(to right, #666, #fff 40%, #999 60%, #333);"></div>
+          <div class="w-[8px] h-[18px] bg-zinc-700 border-x border-black"></div>
+          <div class="w-[54px] h-[58px] rounded-b-2xl border border-black shadow-2xl flex flex-col items-center justify-end p-1" style="background: linear-gradient(to right, #111, #444 50%, #000);">
+            <div id="bulb2" class="w-[36px] h-[12px] rounded-full bg-white shadow-[0_0_20px_8px_rgba(255,255,255,0.9)] transition-all duration-300"></div>
+          </div>
+        </div>
+
+        <!-- Spotlight 3 (Right 65%) -->
+        <div class="absolute flex flex-col items-center" style="left: 65%; top: 3%; transform: translate(-50%, -4px);">
+          <div class="w-[14px] h-[34px] rounded-sm border border-zinc-900" style="background: linear-gradient(to right, #666, #fff 40%, #999 60%, #333);"></div>
+          <div class="w-[8px] h-[18px] bg-zinc-700 border-x border-black"></div>
+          <div class="w-[54px] h-[58px] rounded-b-2xl border border-black shadow-2xl flex flex-col items-center justify-end p-1" style="background: linear-gradient(to right, #111, #444 50%, #000);">
+            <div id="bulb3" class="w-[36px] h-[12px] rounded-full bg-white shadow-[0_0_20px_8px_rgba(255,255,255,0.9)] transition-all duration-300"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Volumetric Light Beams (3 Large Realistic 3D Cones) -->
+      <div id="lightBeams" class="absolute inset-0 z-20 pointer-events-none transition-opacity duration-300">
+        <!-- Beam 1 (35%) -->
+        <div class="absolute w-[440px] h-[85vh] -translate-x-1/2 volumetric-light-beam" style="left: 35%; top: 7%;"></div>
+        <div class="absolute w-[300px] h-[85vh] -translate-x-1/2 volumetric-core-beam" style="left: 35%; top: 7%;"></div>
+
+        <!-- Beam 2 (50% Center) -->
+        <div class="absolute w-[520px] h-[88vh] -translate-x-1/2 volumetric-light-beam" style="left: 50%; top: 7%;"></div>
+        <div class="absolute w-[360px] h-[88vh] -translate-x-1/2 volumetric-core-beam" style="left: 50%; top: 7%;"></div>
+
+        <!-- Beam 3 (65%) -->
+        <div class="absolute w-[440px] h-[85vh] -translate-x-1/2 volumetric-light-beam" style="left: 65%; top: 7%;"></div>
+        <div class="absolute w-[300px] h-[85vh] -translate-x-1/2 volumetric-core-beam" style="left: 65%; top: 7%;"></div>
+
+        <!-- Floor Light Pools -->
+        <div class="absolute inset-0" style="background: radial-gradient(ellipse 70% 30% at 50% 88%, rgba(230,240,255,0.22) 0%, transparent 65%); mix-blend-mode: screen;"></div>
+      </div>
+
+      <!-- Vignette Overlay -->
+      <div class="absolute inset-0 z-25 pointer-events-none" style="background: radial-gradient(ellipse 90% 80% at 50% 45%, transparent 50%, rgba(0,0,0,0.7) 100%);"></div>
+    </div>
+
+    <!-- Center Content: 세련되고 절제된 하이엔드 살롱 무대 + Interactive Clothing Rail Hero -->
+    <div class="relative z-30 max-w-6xl mx-auto px-4 text-center text-white pt-20 pb-28 pointer-events-auto w-full">
+      
+      <!-- 1. 압도적 존재감의 아미유 공식 로고 -->
+      <div class="mb-4 flex justify-center">
+        <img 
+          src="logo2.png" 
+          alt="AMEU HAIR 로고" 
+          class="h-24 sm:h-32 md:h-40 w-auto object-contain hero-lead-logo hover:scale-105 transition-transform duration-700"
+        />
+      </div>
+
+      <!-- 2. 에디토리얼 프리미엄 슬로건 & 타이포그래피 -->
+      <div class="mb-2">
+        <span class="text-[10px] sm:text-xs tracking-[0.35em] text-brand-gold uppercase font-eng font-medium">
+          PREMIUM HAIR ATELIER &middot; SEOUL
+        </span>
+      </div>
+
+      <h1 class="text-2xl sm:text-3xl md:text-5xl font-light tracking-[0.16em] uppercase font-eng text-white/95 leading-tight mb-2 drop-shadow-2xl">
+        The Art of <span class="font-bold italic text-brand-sand">Refined Beauty</span>
+      </h1>
+
+      <p class="text-xs sm:text-sm tracking-[0.2em] text-stone-400 uppercase font-eng mb-5">
+        Mia Sageori &middot; Sungshin Univ.
+      </p>
+
+      <!-- 3. 첫방문 50% 혜택 뱃지 -->
+      <div class="mb-6 flex justify-center">
+        <button 
+          onclick="openEventPopup()" 
+          class="inline-flex items-center gap-2.5 px-5 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-lime-300 hover:bg-white/20 transition-all text-xs font-medium shadow-[0_0_20px_rgba(196,214,0,0.25)] hover:scale-105 active:scale-95"
+        >
+          <span class="w-2 h-2 rounded-full bg-lime-400 animate-pulse"></span>
+          <span class="font-eng tracking-wider uppercase font-semibold">Special Event:</span>
+          <span>첫방문 50% 혜택 보기</span>
+          <i class="fa-solid fa-arrow-right text-[10px]"></i>
+        </button>
+      </div>
+
+      <!-- 4. ==================== INTERACTIVE HAIRSTYLE RAIL GALLERY ==================== -->
+      <div class="w-full relative mt-3 mb-6 bg-stone-950/70 border border-stone-800 rounded-3xl p-4 sm:p-7 backdrop-blur-md shadow-2xl overflow-hidden">
+        
+        <!-- Rail Header Meta -->
+        <div class="flex items-center justify-between mb-3 text-left">
+          <div>
+            <span class="text-[10px] sm:text-[11px] tracking-[0.25em] text-brand-gold font-eng uppercase font-semibold">
+              2026 AMEU SIGNATURE COLLECTION
+            </span>
+            <h2 class="text-base sm:text-lg text-white font-medium tracking-wide">
+              살롱 레일 컬렉션 <span class="text-stone-400 text-xs font-normal ml-2 hidden sm:inline">마우스를 올려 정면 스타일을 마주하세요</span>
+            </h2>
+          </div>
+          <div class="flex items-center gap-2">
+            <button onclick="prevRailItem()" class="w-8 h-8 rounded-full bg-stone-900 border border-stone-700 text-stone-300 hover:text-white hover:border-brand-sand flex items-center justify-center transition-all text-xs">
+              <i class="fa-solid fa-chevron-left"></i>
+            </button>
+            <button onclick="nextRailItem()" class="w-8 h-8 rounded-full bg-stone-900 border border-stone-700 text-stone-300 hover:text-white hover:border-brand-sand flex items-center justify-center transition-all text-xs">
+              <i class="fa-solid fa-chevron-right"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Physical Rail Rig with metallic hanger bar -->
+        <div class="relative w-full pt-6 pb-4">
+          <!-- Metallic Hanging Rail Rod -->
+          <div class="relative w-full h-[6px] rounded-full rail-hanger-rod mb-5 z-20">
+            <!-- Left & Right Rail Brackets -->
+            <div class="absolute -left-1 -top-1 w-3 h-4 bg-stone-400 rounded-sm border border-stone-950"></div>
+            <div class="absolute -right-1 -top-1 w-3 h-4 bg-stone-400 rounded-sm border border-stone-950"></div>
+          </div>
+
+          <!-- 3D Perspective Rail Track -->
+          <div id="railTrack" class="rail-perspective-stage rail-scroll-track relative w-full flex items-center justify-start sm:justify-center gap-3 sm:gap-5 overflow-x-auto py-4 px-2 select-none cursor-grab active:cursor-grabbing">
+            
+            <!-- Item 1 -->
+            <div class="rail-item-card active flex-shrink-0 relative group" data-index="0" onmouseenter="focusRailItem(0)">
+              <!-- Hanger Top Hook SVG -->
+              <div class="w-full flex justify-center -mb-1">
+                <svg width="34" height="26" viewBox="0 0 34 26" fill="none" class="text-stone-400">
+                  <path d="M17 2 C13 2 11 5 11 9 C11 13 15 15 17 17 L2 25 L32 25 Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="rgba(30,30,30,0.6)"/>
+                </svg>
+              </div>
+              <div class="w-[155px] sm:w-[175px] h-[230px] sm:h-[260px] rounded-xl overflow-hidden border border-stone-700/80 bg-stone-900 shadow-xl relative">
+                <img src="models/model-1.jpg" alt="시그니처 슬릭컷" class="w-full h-full object-cover"/>
+                <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent"></div>
+                <div class="absolute bottom-2 left-2 right-2 text-left">
+                  <span class="text-[9px] font-eng tracking-wider uppercase text-brand-gold">01 &middot; SLEEK CUT</span>
+                  <div class="text-xs font-semibold text-white truncate">시그니처 슬릭 레이어드</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Item 2 -->
+            <div class="rail-item-card resting flex-shrink-0 relative group" data-index="1" onmouseenter="focusRailItem(1)">
+              <div class="w-full flex justify-center -mb-1">
+                <svg width="34" height="26" viewBox="0 0 34 26" fill="none" class="text-stone-400">
+                  <path d="M17 2 C13 2 11 5 11 9 C11 13 15 15 17 17 L2 25 L32 25 Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="rgba(30,30,30,0.6)"/>
+                </svg>
+              </div>
+              <div class="w-[155px] sm:w-[175px] h-[230px] sm:h-[260px] rounded-xl overflow-hidden border border-stone-700/80 bg-stone-900 shadow-xl relative">
+                <img src="models/model-2.jpg" alt="애쉬베이지 웨이브" class="w-full h-full object-cover"/>
+                <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent"></div>
+                <div class="absolute bottom-2 left-2 right-2 text-left">
+                  <span class="text-[9px] font-eng tracking-wider uppercase text-brand-gold">02 &middot; ASH COLOR</span>
+                  <div class="text-xs font-semibold text-white truncate">애쉬 베이지 웨이브</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Item 3 -->
+            <div class="rail-item-card resting flex-shrink-0 relative group" data-index="2" onmouseenter="focusRailItem(2)">
+              <div class="w-full flex justify-center -mb-1">
+                <svg width="34" height="26" viewBox="0 0 34 26" fill="none" class="text-stone-400">
+                  <path d="M17 2 C13 2 11 5 11 9 C11 13 15 15 17 17 L2 25 L32 25 Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="rgba(30,30,30,0.6)"/>
+                </svg>
+              </div>
+              <div class="w-[155px] sm:w-[175px] h-[230px] sm:h-[260px] rounded-xl overflow-hidden border border-stone-700/80 bg-stone-900 shadow-xl relative">
+                <img src="models/model-3.jpg" alt="페미닌 롱웨이브" class="w-full h-full object-cover"/>
+                <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent"></div>
+                <div class="absolute bottom-2 left-2 right-2 text-left">
+                  <span class="text-[9px] font-eng tracking-wider uppercase text-brand-gold">03 &middot; FEMININE</span>
+                  <div class="text-xs font-semibold text-white truncate">페미닌 시스루뱅 웨이브</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Item 4 -->
+            <div class="rail-item-card resting flex-shrink-0 relative group" data-index="3" onmouseenter="focusRailItem(3)">
+              <div class="w-full flex justify-center -mb-1">
+                <svg width="34" height="26" viewBox="0 0 34 26" fill="none" class="text-stone-400">
+                  <path d="M17 2 C13 2 11 5 11 9 C11 13 15 15 17 17 L2 25 L32 25 Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="rgba(30,30,30,0.6)"/>
+                </svg>
+              </div>
+              <div class="w-[155px] sm:w-[175px] h-[230px] sm:h-[260px] rounded-xl overflow-hidden border border-stone-700/80 bg-stone-900 shadow-xl relative">
+                <img src="models/model-4.jpg" alt="소프트 C컬 미디움" class="w-full h-full object-cover"/>
+                <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent"></div>
+                <div class="absolute bottom-2 left-2 right-2 text-left">
+                  <span class="text-[9px] font-eng tracking-wider uppercase text-brand-gold">04 &middot; C-CURL</span>
+                  <div class="text-xs font-semibold text-white truncate">소프트 C컬 미디움</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Item 5 -->
+            <div class="rail-item-card resting flex-shrink-0 relative group" data-index="4" onmouseenter="focusRailItem(4)">
+              <div class="w-full flex justify-center -mb-1">
+                <svg width="34" height="26" viewBox="0 0 34 26" fill="none" class="text-stone-400">
+                  <path d="M17 2 C13 2 11 5 11 9 C11 13 15 15 17 17 L2 25 L32 25 Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="rgba(30,30,30,0.6)"/>
+                </svg>
+              </div>
+              <div class="w-[155px] sm:w-[175px] h-[230px] sm:h-[260px] rounded-xl overflow-hidden border border-stone-700/80 bg-stone-900 shadow-xl relative">
+                <img src="models/model-5.jpg" alt="태슬단발 & 세미허쉬" class="w-full h-full object-cover"/>
+                <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent"></div>
+                <div class="absolute bottom-2 left-2 right-2 text-left">
+                  <span class="text-[9px] font-eng tracking-wider uppercase text-brand-gold">05 &middot; TASSEL BOB</span>
+                  <div class="text-xs font-semibold text-white truncate">태슬 단발 & 세미허쉬</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Item 6 -->
+            <div class="rail-item-card resting flex-shrink-0 relative group" data-index="5" onmouseenter="focusRailItem(5)">
+              <div class="w-full flex justify-center -mb-1">
+                <svg width="34" height="26" viewBox="0 0 34 26" fill="none" class="text-stone-400">
+                  <path d="M17 2 C13 2 11 5 11 9 C11 13 15 15 17 17 L2 25 L32 25 Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="rgba(30,30,30,0.6)"/>
+                </svg>
+              </div>
+              <div class="w-[155px] sm:w-[175px] h-[230px] sm:h-[260px] rounded-xl overflow-hidden border border-stone-700/80 bg-stone-900 shadow-xl relative">
+                <img src="models/model-6.jpg" alt="내추럴 빌드펌" class="w-full h-full object-cover"/>
+                <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent"></div>
+                <div class="absolute bottom-2 left-2 right-2 text-left">
+                  <span class="text-[9px] font-eng tracking-wider uppercase text-brand-gold">06 &middot; BUILD PERM</span>
+                  <div class="text-xs font-semibold text-white truncate">내추럴 페미닌 빌드펌</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Item 7 -->
+            <div class="rail-item-card resting flex-shrink-0 relative group" data-index="6" onmouseenter="focusRailItem(6)">
+              <div class="w-full flex justify-center -mb-1">
+                <svg width="34" height="26" viewBox="0 0 34 26" fill="none" class="text-stone-400">
+                  <path d="M17 2 C13 2 11 5 11 9 C11 13 15 15 17 17 L2 25 L32 25 Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="rgba(30,30,30,0.6)"/>
+                </svg>
+              </div>
+              <div class="w-[155px] sm:w-[175px] h-[230px] sm:h-[260px] rounded-xl overflow-hidden border border-stone-700/80 bg-stone-900 shadow-xl relative">
+                <img src="models/model-7.jpg" alt="여신 롱웨이브" class="w-full h-full object-cover"/>
+                <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent"></div>
+                <div class="absolute bottom-2 left-2 right-2 text-left">
+                  <span class="text-[9px] font-eng tracking-wider uppercase text-brand-gold">07 &middot; GODDESS WAVE</span>
+                  <div class="text-xs font-semibold text-white truncate">엘레강스 여신 웨이브</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Item 8 -->
+            <div class="rail-item-card resting flex-shrink-0 relative group" data-index="7" onmouseenter="focusRailItem(7)">
+              <div class="w-full flex justify-center -mb-1">
+                <svg width="34" height="26" viewBox="0 0 34 26" fill="none" class="text-stone-400">
+                  <path d="M17 2 C13 2 11 5 11 9 C11 13 15 15 17 17 L2 25 L32 25 Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="rgba(30,30,30,0.6)"/>
+                </svg>
+              </div>
+              <div class="w-[155px] sm:w-[175px] h-[230px] sm:h-[260px] rounded-xl overflow-hidden border border-stone-700/80 bg-stone-900 shadow-xl relative">
+                <img src="models/model-8.jpg" alt="클래식 롱 C컬" class="w-full h-full object-cover"/>
+                <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent"></div>
+                <div class="absolute bottom-2 left-2 right-2 text-left">
+                  <span class="text-[9px] font-eng tracking-wider uppercase text-brand-gold">08 &middot; CLASSIC LONG</span>
+                  <div class="text-xs font-semibold text-white truncate">클래식 C컬 롱헤어</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Item 9 -->
+            <div class="rail-item-card resting flex-shrink-0 relative group" data-index="8" onmouseenter="focusRailItem(8)">
+              <div class="w-full flex justify-center -mb-1">
+                <svg width="34" height="26" viewBox="0 0 34 26" fill="none" class="text-stone-400">
+                  <path d="M17 2 C13 2 11 5 11 9 C11 13 15 15 17 17 L2 25 L32 25 Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="rgba(30,30,30,0.6)"/>
+                </svg>
+              </div>
+              <div class="w-[155px] sm:w-[175px] h-[230px] sm:h-[260px] rounded-xl overflow-hidden border border-stone-700/80 bg-stone-900 shadow-xl relative">
+                <img src="models/model-10.jpg" alt="모던 보브 단발" class="w-full h-full object-cover"/>
+                <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent"></div>
+                <div class="absolute bottom-2 left-2 right-2 text-left">
+                  <span class="text-[9px] font-eng tracking-wider uppercase text-brand-gold">09 &middot; MODERN BOB</span>
+                  <div class="text-xs font-semibold text-white truncate">모던 보브 단발</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Item 10 -->
+            <div class="rail-item-card resting flex-shrink-0 relative group" data-index="9" onmouseenter="focusRailItem(9)">
+              <div class="w-full flex justify-center -mb-1">
+                <svg width="34" height="26" viewBox="0 0 34 26" fill="none" class="text-stone-400">
+                  <path d="M17 2 C13 2 11 5 11 9 C11 13 15 15 17 17 L2 25 L32 25 Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="rgba(30,30,30,0.6)"/>
+                </svg>
+              </div>
+              <div class="w-[155px] sm:w-[175px] h-[230px] sm:h-[260px] rounded-xl overflow-hidden border border-stone-700/80 bg-stone-900 shadow-xl relative">
+                <img src="models/model-11.jpg" alt="그레이스 볼륨 롱펌" class="w-full h-full object-cover"/>
+                <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent"></div>
+                <div class="absolute bottom-2 left-2 right-2 text-left">
+                  <span class="text-[9px] font-eng tracking-wider uppercase text-brand-gold">10 &middot; GRACE PERM</span>
+                  <div class="text-xs font-semibold text-white truncate">그레이스 볼륨 롱펌</div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Rail Active Style Detail Caption Bar (가격표 없이 세련된 스타일 설명 및 실시간 예약) -->
+        <div class="mt-4 pt-4 border-t border-stone-800 flex flex-col sm:flex-row items-center justify-between gap-4 text-left">
+          <div id="railActiveInfo">
+            <span id="railActiveTag" class="text-[11px] font-eng text-brand-sand tracking-widest uppercase font-semibold">01 &middot; SIGNATURE SLEEK CUT</span>
+            <h3 id="railActiveTitle" class="text-lg sm:text-xl font-bold text-white">시그니처 슬릭 레이어드컷</h3>
+            <p id="railActiveDesc" class="text-xs text-stone-400 mt-0.5">얼굴선을 부드럽게 감싸는 맞춤형 실루엣 레이어드 디자인 &middot; 모질 개선 슬릭 케어</p>
+          </div>
+
+          <div class="flex items-center gap-3 w-full sm:w-auto">
+            <button 
+              onclick="bookCurrentRailStyle()" 
+              class="w-full sm:w-auto px-6 py-3 rounded-full bg-brand-sand text-stone-950 font-eng text-xs tracking-wider font-bold hover:bg-white transition-all shadow-[0_0_20px_rgba(223,215,205,0.3)] hover:scale-105 active:scale-95 flex items-center justify-center gap-2 whitespace-nowrap"
+            >
+              <i class="fa-solid fa-calendar-check text-xs"></i>
+              <span>이 스타일로 실시간 예약</span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+      <!-- ==================== END INTERACTIVE HAIRSTYLE RAIL ==================== -->
+
+      <!-- 5. 하단 CTA 버튼 -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mt-2">
+        <button 
+          onclick="openReservationModal()" 
+          class="w-full sm:w-auto px-10 py-3.5 rounded-full bg-brand-sand text-stone-950 font-eng text-xs tracking-[0.2em] font-bold hover:bg-white transition-all shadow-[0_0_25px_rgba(223,215,205,0.35)] hover:scale-105 active:scale-95 flex items-center justify-center gap-3"
+        >
+          <span>BOOK AN APPOINTMENT</span>
+          <i class="fa-solid fa-arrow-right text-xs"></i>
+        </button>
+        <a 
+          href="#salon" 
+          class="w-full sm:w-auto px-9 py-3.5 rounded-full border border-white/30 text-white font-eng text-xs tracking-[0.2em] font-medium hover:bg-white/10 transition-all flex items-center justify-center gap-2"
+        >
+          <span>OUR SALONS</span>
+          <i class="fa-solid fa-location-dot text-xs text-brand-sand"></i>
+        </a>
+      </div>
+
+    </div>
+    <!-- Bottom Salon Location Pill -->
+    <div class="absolute bottom-6 left-0 right-0 z-30 flex justify-center">
+      <div class="bg-black/60 backdrop-blur-md px-6 py-2.5 rounded-full border border-white/15 text-xs text-stone-300 flex items-center gap-4 font-eng shadow-lg">
+        <span class="text-brand-sand font-semibold">2 LOCATIONS:</span>
+        <a href="#mia" class="hover:text-white transition-colors flex items-center gap-1.5">
+          <i class="fa-solid fa-location-dot text-brand-gold text-[10px]"></i>
+          <span>미아사거리점 (02-980-0951)</span>
+        </a>
+        <span class="text-white/20">|</span>
+        <a href="#sungshin" class="hover:text-white transition-colors flex items-center gap-1.5">
+          <i class="fa-solid fa-location-dot text-brand-gold text-[10px]"></i>
+          <span>성신여대점 (02-922-0111)</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ==================== 4. PHOTO-MATCHED DUAL SIGNATURE BANNERS ==================== -->
+  <section class="py-12 md:py-16 bg-white border-b border-stone-200">
+    <div class="max-w-7xl mx-auto px-6">
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+        
+        <!-- CARD 1: 실시간 예약하기 (준오헤어 좌측 카드 완벽 재현) -->
+        <div onclick="openReservationModal()" class="feature-card group cursor-pointer relative h-64 sm:h-72 lg:h-80 rounded-2xl overflow-hidden shadow-md flex items-center p-8 sm:p-12 text-white">
+          <div class="absolute inset-0 bg-stone-900 z-0 overflow-hidden">
+            <img 
+              src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&w=1000&q=80" 
+              alt="아미유 미용실 실시간 예약" 
+              class="card-bg w-full h-full object-cover opacity-70 transition-transform duration-700 ease-out"
+            />
+            <div class="absolute inset-0 bg-gradient-to-r from-stone-950/90 via-stone-950/60 to-transparent"></div>
+          </div>
+
+          <div class="relative z-10 max-w-md">
+            <div class="flex items-center gap-2 mb-2">
+              <span class="text-[11px] font-eng font-bold tracking-widest text-brand-gold uppercase">ONLINE RESERVATION</span>
+            </div>
+            <h3 class="text-2xl sm:text-3xl font-extrabold tracking-tight mb-3 flex items-center gap-3">
+              <span class="font-gowun">실시간 예약하기</span>
+              <span class="text-xl sm:text-2xl text-brand-sand group-hover:translate-x-2 transition-transform">&rarr;</span>
+            </h3>
+            <p class="text-stone-200 text-xs sm:text-sm font-normal leading-relaxed mb-6 font-serif-kr">
+              쉽고 간편한 매장 예약과 디자이너를 추천해 드립니다.<br />
+              미아사거리점 & 성신여대점 네이버 실시간 예약 바로가기
+            </p>
+            <div class="flex items-center gap-2">
+              <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/20 backdrop-blur-md text-[11px] font-medium border border-white/30 group-hover:bg-white group-hover:text-stone-900 transition-colors">
+                <i class="fa-solid fa-scissors text-xs"></i>
+                <span>매장 & 디자이너 선택</span>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 2: AMEU CARE 이용하기 (준오헤어 우측 카드 완벽 재현) -->
+        <div onclick="scrollToSection('membership')" class="feature-card group cursor-pointer relative h-64 sm:h-72 lg:h-80 rounded-2xl overflow-hidden shadow-md flex items-center p-8 sm:p-12 text-white">
+          <div class="absolute inset-0 bg-stone-900 z-0 overflow-hidden">
+            <img 
+              src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=1000&q=80" 
+              alt="아미유 프리미엄 헤어 케어 솔루션" 
+              class="card-bg w-full h-full object-cover opacity-60 transition-transform duration-700 ease-out"
+            />
+            <div class="absolute inset-0 bg-gradient-to-r from-stone-950/90 via-stone-950/60 to-transparent"></div>
+          </div>
+
+          <div class="relative z-10 max-w-md">
+            <div class="flex items-center gap-2 mb-2">
+              <span class="text-[11px] font-eng font-bold tracking-widest text-brand-gold uppercase">AMEU CARE & MEMBERSHIP</span>
+            </div>
+            <h3 class="text-2xl sm:text-3xl font-extrabold tracking-tight mb-3 flex items-center gap-3">
+              <span class="font-gowun">AMEU CARE 이용하기</span>
+              <span class="text-xl sm:text-2xl text-brand-sand group-hover:translate-x-2 transition-transform">&rarr;</span>
+            </h3>
+            <p class="text-stone-200 text-xs sm:text-sm font-normal leading-relaxed mb-6 font-serif-kr">
+              건강한 모발과 두피를 위한 뷰티 제품과<br />
+              VIP 멤버십 프리미엄 혜택을 만나보세요.
+            </p>
+            <div class="flex items-center gap-2">
+              <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/20 backdrop-blur-md text-[11px] font-medium border border-white/30 group-hover:bg-white group-hover:text-stone-900 transition-colors">
+                <i class="fa-solid fa-crown text-xs text-brand-gold"></i>
+                <span>VIP 혜택 확인하기</span>
+              </span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ==================== 5. SALON LOCATIONS ==================== -->
+  <section id="salon" class="py-24 bg-stone-50 border-b border-stone-200">
+    <div class="max-w-7xl mx-auto px-6">
+      
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <span class="font-eng text-xs font-bold tracking-[0.25em] text-brand-brown uppercase">Salon Locations</span>
+        <h2 class="font-gowun text-3xl sm:text-4xl font-bold text-stone-900 mt-2 mb-3">
+          아미유 헤어 살롱 지점 안내
+        </h2>
+        <p class="text-stone-600 text-sm font-serif-kr">
+          미아사거리점과 성신여대점, 원하시는 지점에서 감각적인 맞춤 스타일링을 경험해 보세요.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+        
+        <!-- BRANCH 1: 미아사거리점 -->
+        <div id="mia" class="bg-white rounded-3xl overflow-hidden shadow-lg border border-stone-200 flex flex-col justify-between transition-all hover:shadow-2xl">
+          <div>
+            <div class="relative h-64 sm:h-72 overflow-hidden bg-stone-200">
+              <img 
+                src="https://images.unsplash.com/photo-1562322140-8baeececf3df?auto=format&fit=crop&w=900&q=80" 
+                alt="아미유 미아사거리점 매장 전경" 
+                class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+              />
+              <div class="absolute top-4 left-4">
+                <span class="px-3.5 py-1.5 rounded-full bg-stone-900/80 backdrop-blur-md text-white text-xs font-bold font-eng tracking-wider">
+                  STORE 01
+                </span>
+              </div>
+              <div class="absolute bottom-4 left-4 right-4 bg-stone-950/70 backdrop-blur-md p-4 rounded-2xl text-white">
+                <h3 class="text-xl font-bold font-gowun">아미유 헤어 미아사거리점</h3>
+                <p class="text-xs text-brand-sand mt-0.5 font-eng">MIA SAGUORI STORE</p>
+              </div>
+            </div>
+
+            <div class="p-6 sm:p-8 space-y-4">
+              <div class="p-3 rounded-xl bg-lime-50 border border-lime-300 text-lime-900 text-xs font-bold flex items-center justify-between">
+                <span>🎉 첫방문 고객 전 품목 50% 특별 할인</span>
+                <button onclick="openEventPopup('mia')" class="underline text-lime-800">포스터 보기</button>
+              </div>
+
+              <div class="flex items-start gap-3 text-xs sm:text-sm text-stone-700">
+                <i class="fa-solid fa-location-dot text-brand-brown text-base mt-0.5 w-4 text-center"></i>
+                <div>
+                  <span class="font-bold text-stone-900 block font-gowun">위치 안내</span>
+                  <span>서울 강북구 미아사거리역 인근 (상세 주소 네이버 플레이스 참조)</span>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-3 text-xs sm:text-sm text-stone-700">
+                <i class="fa-regular fa-clock text-brand-brown text-base mt-0.5 w-4 text-center"></i>
+                <div>
+                  <span class="font-bold text-stone-900 block font-gowun">영업 시간</span>
+                  <span>매일 10:00 ~ 20:00 (디자이너별 정기 휴무 네이버 예약표 참고)</span>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-3 text-xs sm:text-sm text-stone-700">
+                <i class="fa-solid fa-star text-brand-gold text-base mt-0.5 w-4 text-center"></i>
+                <div>
+                  <span class="font-bold text-stone-900 block font-gowun">시그니처 메뉴</span>
+                  <span>퍼스널 헤어 컨설팅, 프리미엄 헤드스파 룸, 볼륨 레이어드펌, 디자인 탈색</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-6 sm:p-8 pt-0 flex flex-col sm:flex-row gap-2.5">
+            <a 
+              href="https://map.naver.com/p/entry/place/1809226710?placePath=%2Fstylist%3Ffrom%3Dmap%26fromPanelNum%3D1%26additionalHeight%3D76%26timestamp%3D202611091600%26locale%3Dko%26svcName%3Dmap_pcv5&c=15.00,0,0,0,dh" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              class="flex-1 py-3 px-4 rounded-xl bg-emerald-600 text-white font-bold text-xs sm:text-sm text-center hover:bg-emerald-700 transition-colors flex items-center justify-center gap-2 shadow-sm"
+            >
+              <i class="fa-solid fa-calendar-check"></i>
+              <span>네이버 실시간 예약</span>
+            </a>
+            <a 
+              href="tel:02-980-0951" 
+              class="py-3 px-3.5 rounded-xl bg-stone-900 text-white font-semibold text-xs sm:text-sm text-center hover:bg-stone-800 transition-colors flex items-center justify-center gap-1.5"
+            >
+              <i class="fa-solid fa-phone"></i>
+              <span>02-980-0951</span>
+            </a>
+            <a 
+              href="https://www.instagram.com/ameu_ms" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              class="py-3 px-3.5 rounded-xl bg-gradient-to-r from-amber-500 via-rose-500 to-purple-600 text-white font-semibold text-xs sm:text-sm text-center hover:opacity-95 transition-opacity flex items-center justify-center gap-1.5 shadow-sm"
+            >
+              <i class="fa-brands fa-instagram"></i>
+              <span>@ameu_ms</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- BRANCH 2: 성신여대점 -->
+        <div id="sungshin" class="bg-white rounded-3xl overflow-hidden shadow-lg border border-stone-200 flex flex-col justify-between transition-all hover:shadow-2xl">
+          <div>
+            <div class="relative h-64 sm:h-72 overflow-hidden bg-stone-200">
+              <img 
+                src="https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?auto=format&fit=crop&w=900&q=80" 
+                alt="아미유 성신여대점 매장 전경" 
+                class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+              />
+              <div class="absolute top-4 left-4">
+                <span class="px-3.5 py-1.5 rounded-full bg-stone-900/80 backdrop-blur-md text-white text-xs font-bold font-eng tracking-wider">
+                  STORE 02
+                </span>
+              </div>
+              <div class="absolute bottom-4 left-4 right-4 bg-stone-950/70 backdrop-blur-md p-4 rounded-2xl text-white">
+                <h3 class="text-xl font-bold font-gowun">아미유 헤어 성신여대점</h3>
+                <p class="text-xs text-brand-sand mt-0.5 font-eng">SUNGSHIN UNIV. STORE</p>
+              </div>
+            </div>
+
+            <div class="p-6 sm:p-8 space-y-4">
+              <div class="p-3 rounded-xl bg-lime-50 border border-lime-300 text-lime-900 text-xs font-bold flex items-center justify-between">
+                <span>🎉 첫방문 50% (CUT 13,900 / PERM 40,000)</span>
+                <button onclick="openEventPopup('sungshin')" class="underline text-lime-800">포스터 보기</button>
+              </div>
+
+              <div class="flex items-start gap-3 text-xs sm:text-sm text-stone-700">
+                <i class="fa-solid fa-location-dot text-brand-brown text-base mt-0.5 w-4 text-center"></i>
+                <div>
+                  <span class="font-bold text-stone-900 block font-gowun">위치 안내</span>
+                  <span>서울 성북구 성신여대입구역 도보 인근 (인스타그램 & 네이버 플레이스 연동)</span>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-3 text-xs sm:text-sm text-stone-700">
+                <i class="fa-regular fa-clock text-brand-brown text-base mt-0.5 w-4 text-center"></i>
+                <div>
+                  <span class="font-bold text-stone-900 block font-gowun">영업 시간</span>
+                  <span>매일 10:30 ~ 20:30 (디자이너별 예약 스케줄 실시간 확인 가능)</span>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-3 text-xs sm:text-sm text-stone-700">
+                <i class="fa-solid fa-star text-brand-gold text-base mt-0.5 w-4 text-center"></i>
+                <div>
+                  <span class="font-bold text-stone-900 block font-gowun">시그니처 메뉴</span>
+                  <span>트렌디 빌드펌, 슬릭컷, 솜브레 & 발레아쥬, 복구 클리닉 케어</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-6 sm:p-8 pt-0 flex flex-col sm:flex-row gap-2.5">
+            <a 
+              href="https://m.place.naver.com/hairshop/1423704026/stylist?entry=plt&utm_source=ig&utm_medium=social&utm_content=link_in_bio" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              class="flex-1 py-3 px-4 rounded-xl bg-emerald-600 text-white font-bold text-xs sm:text-sm text-center hover:bg-emerald-700 transition-colors flex items-center justify-center gap-2 shadow-sm"
+            >
+              <i class="fa-solid fa-calendar-check"></i>
+              <span>네이버 실시간 예약</span>
+            </a>
+            <a 
+              href="tel:02-922-0111" 
+              class="py-3 px-3.5 rounded-xl bg-stone-900 text-white font-semibold text-xs sm:text-sm text-center hover:bg-stone-800 transition-colors flex items-center justify-center gap-1.5"
+            >
+              <i class="fa-solid fa-phone"></i>
+              <span>02-922-0111</span>
+            </a>
+            <a 
+              href="https://www.instagram.com/ameu_ss/" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              class="py-3 px-3.5 rounded-xl bg-gradient-to-r from-amber-500 via-rose-500 to-purple-600 text-white font-semibold text-xs sm:text-sm text-center hover:opacity-95 transition-opacity flex items-center justify-center gap-1.5 shadow-sm"
+            >
+              <i class="fa-brands fa-instagram"></i>
+              <span>@ameu_ss</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ==================== 6. SALON INTERIOR ==================== -->
+  <section id="interior" class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-6">
+      
+      <div class="max-w-3xl mb-16">
+        <span class="font-eng text-xs font-bold tracking-[0.25em] text-brand-brown uppercase">Salon Interior Tour</span>
+        <h2 class="font-gowun text-3xl sm:text-4xl font-bold text-stone-900 mt-2 mb-4 leading-tight">
+          손님이 문을 열고 입장했을 때,<br />
+          아미유가 선사하는 3가지 특별한 공간
+        </h2>
+        <p class="text-stone-600 text-sm sm:text-base leading-relaxed font-serif-kr">
+          단순히 머리를 자르고 가꾸는 공간을 넘어, 온전히 나에게 집중할 수 있도록 인테리어와 조명, 좌석 간격 하나까지 섬세하게 설계했습니다.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        <!-- Space 1 -->
+        <div class="group rounded-3xl overflow-hidden bg-stone-50 border border-stone-200 shadow-sm hover:shadow-xl transition-all">
+          <div class="relative h-64 overflow-hidden bg-stone-200">
+            <img 
+              src="https://images.unsplash.com/photo-1527799820374-dcf8d9d4a388?auto=format&fit=crop&w=800&q=80" 
+              alt="1:1 퍼스널 컨설팅 라운지" 
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            />
+            <span class="absolute top-4 left-4 px-3 py-1 rounded-full bg-black/60 text-white font-eng text-[11px]">ZONE 01</span>
+          </div>
+          <div class="p-6">
+            <h4 class="font-gowun text-lg font-bold text-stone-900 mb-2">웰컴 라운지 & 1:1 상담 존</h4>
+            <p class="text-xs text-stone-600 leading-relaxed mb-4">
+              시술에 들어가기 전, 웰컴 티와 함께 고객님의 평소 손질 습관, 모발 컨디션, 얼굴형을 정밀 진단하는 프라이빗 컨설팅 공간입니다.
+            </p>
+            <div class="text-[11px] font-semibold text-brand-brown flex items-center gap-1.5">
+              <i class="fa-solid fa-mug-hot"></i>
+              <span>웰컴 티 서비스 & 퍼스널 모발 진단</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Space 2 -->
+        <div class="group rounded-3xl overflow-hidden bg-stone-50 border border-stone-200 shadow-sm hover:shadow-xl transition-all">
+          <div class="relative h-64 overflow-hidden bg-stone-200">
+            <img 
+              src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&w=800&q=80" 
+              alt="프라이빗 독립 스타일링 체어" 
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            />
+            <span class="absolute top-4 left-4 px-3 py-1 rounded-full bg-black/60 text-white font-eng text-[11px]">ZONE 02</span>
+          </div>
+          <div class="p-6">
+            <h4 class="font-gowun text-lg font-bold text-stone-900 mb-2">프라이빗 스타일링 홀</h4>
+            <p class="text-xs text-stone-600 leading-relaxed mb-4">
+              옆 사람과의 시선이 차단되는 여유로운 좌석 간격과 부드러운 간접 조명으로, 긴 시술 시간에도 편안하고 아늑하게 머무실 수 있습니다.
+            </p>
+            <div class="text-[11px] font-semibold text-brand-brown flex items-center gap-1.5">
+              <i class="fa-solid fa-chair"></i>
+              <span>인체공학 가죽 체어 & 독립 미러</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Space 3 -->
+        <div class="group rounded-3xl overflow-hidden bg-stone-50 border border-stone-200 shadow-sm hover:shadow-xl transition-all">
+          <div class="relative h-64 overflow-hidden bg-stone-200">
+            <img 
+              src="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=800&q=80" 
+              alt="힐링 헤드스파 룸" 
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            />
+            <span class="absolute top-4 left-4 px-3 py-1 rounded-full bg-black/60 text-white font-eng text-[11px]">ZONE 03</span>
+          </div>
+          <div class="p-6">
+            <h4 class="font-gowun text-lg font-bold text-stone-900 mb-2">힐링 헤드스파 & 샴푸 룸</h4>
+            <p class="text-xs text-stone-600 leading-relaxed mb-4">
+              어두운 조명과 클래식 음악, 프리미엄 스파 베드가 완비되어 있어 두피 마사지와 스파 케어를 받는 동안 깊은 휴식을 선사합니다.
+            </p>
+            <div class="text-[11px] font-semibold text-brand-brown flex items-center gap-1.5">
+              <i class="fa-solid fa-spa"></i>
+              <span>전동 풀 플랫 스파 베드 & 아로마 테라피</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ==================== 7. STYLE BOOK ==================== -->
+  <section id="stylebook" class="py-24 bg-stone-900 text-white">
+    <div class="max-w-7xl mx-auto px-6">
+      
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+        <div>
+          <span class="font-eng text-xs font-bold tracking-[0.25em] text-brand-gold uppercase">AMEU Collection</span>
+          <h2 class="font-gowun text-3xl sm:text-4xl font-bold mt-2 tracking-wide">
+            시그니처 스타일북
+          </h2>
+          <p class="text-stone-400 text-sm mt-2 font-serif-kr">
+            아미유 수석 디자이너들의 감각이 담긴 시즌 트렌드 헤어 컬렉션입니다.
+          </p>
+        </div>
+
+        <button onclick="openReservationModal()" class="self-start md:self-auto px-6 py-2.5 rounded-full border border-brand-gold text-brand-gold font-eng text-xs tracking-wider hover:bg-brand-gold hover:text-stone-950 transition-all">
+          스타일 상담 & 예약하기 &rarr;
+        </button>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
+        
+        <!-- Style 1 -->
+        <div class="group relative rounded-2xl overflow-hidden aspect-[3/4] bg-stone-800">
+          <img src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?auto=format&fit=crop&w=600&q=80" alt="페미닌 빌드펌" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+          <div class="absolute inset-0 bg-gradient-to-t from-stone-950/90 via-transparent to-transparent flex flex-col justify-end p-5">
+            <span class="text-[11px] text-brand-gold font-eng tracking-wider uppercase">PERM</span>
+            <h4 class="font-gowun text-base font-bold">페미닌 빌드펌</h4>
+            <p class="text-[11px] text-stone-300 mt-0.5">손질이 쉬운 볼륨 C+S컬</p>
+          </div>
+        </div>
+
+        <!-- Style 2 -->
+        <div class="group relative rounded-2xl overflow-hidden aspect-[3/4] bg-stone-800">
+          <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=600&q=80" alt="슬릭 레이어드 컷" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+          <div class="absolute inset-0 bg-gradient-to-t from-stone-950/90 via-transparent to-transparent flex flex-col justify-end p-5">
+            <span class="text-[11px] text-brand-gold font-eng tracking-wider uppercase">CUT</span>
+            <h4 class="font-gowun text-base font-bold">시그니처 슬릭 컷</h4>
+            <p class="text-[11px] text-stone-300 mt-0.5">가볍고 찰랑이는 실루엣</p>
+          </div>
+        </div>
+
+        <!-- Style 3 -->
+        <div class="group relative rounded-2xl overflow-hidden aspect-[3/4] bg-stone-800">
+          <img src="https://images.unsplash.com/photo-1562322140-8baeececf3df?auto=format&fit=crop&w=600&q=80" alt="애쉬 베이지 디자인 컬러" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+          <div class="absolute inset-0 bg-gradient-to-t from-stone-950/90 via-transparent to-transparent flex flex-col justify-end p-5">
+            <span class="text-[11px] text-brand-gold font-eng tracking-wider uppercase">COLOR</span>
+            <h4 class="font-gowun text-base font-bold">애쉬 베이지 발레아쥬</h4>
+            <p class="text-[11px] text-stone-300 mt-0.5">자연스러운 입체감의 그라데이션</p>
+          </div>
+        </div>
+
+        <!-- Style 4 -->
+        <div class="group relative rounded-2xl overflow-hidden aspect-[3/4] bg-stone-800">
+          <img src="https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?auto=format&fit=crop&w=600&q=80" alt="맨즈 드롭컷 & 다운펌" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+          <div class="absolute inset-0 bg-gradient-to-t from-stone-950/90 via-transparent to-transparent flex flex-col justify-end p-5">
+            <span class="text-[11px] text-brand-gold font-eng tracking-wider uppercase">MEN'S</span>
+            <h4 class="font-gowun text-base font-bold">맨즈 시스루 드롭컷</h4>
+            <p class="text-[11px] text-stone-300 mt-0.5">트렌디하고 샤프한 헤어 라인</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ==================== 8. MEMBERSHIP ==================== -->
+  <section id="membership" class="py-24 bg-brand-beige">
+    <div class="max-w-5xl mx-auto px-6 text-center">
+      <span class="font-eng text-xs font-bold tracking-[0.25em] text-brand-brown uppercase">VIP Privilege</span>
+      <h2 class="font-gowun text-3xl sm:text-4xl font-bold text-stone-900 mt-2 mb-4">
+        AMEU VIP 멤버십 혜택
+      </h2>
+      <p class="text-stone-600 text-sm sm:text-base max-w-xl mx-auto mb-12 font-serif-kr">
+        아미유를 찾아주시는 특별한 고객님을 위한 프리미엄 정액권 혜택.<br />
+        미아사거리점과 성신여대점 모두에서 자유롭게 사용하실 수 있습니다.
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
+        
+        <!-- Tier 1 -->
+        <div class="bg-white rounded-3xl p-8 border border-stone-200 shadow-sm flex flex-col justify-between">
+          <div>
+            <div class="text-xs font-bold tracking-widest text-stone-500 font-eng">SILVER CARD</div>
+            <div class="font-gowun text-2xl font-bold text-stone-900 mt-2 mb-4">30만원권</div>
+            <ul class="space-y-2 text-xs text-stone-600 mb-6 font-serif-kr">
+              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-brown"></i> 전 시술 상시 10% 추가 할인</li>
+              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-brown"></i> 모발 수분 클리닉 1회 무료</li>
+              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-brown"></i> 동반 1인 가족 함께 사용 가능</li>
+            </ul>
+          </div>
+          <button onclick="openReservationModal()" class="w-full py-3 rounded-xl border border-stone-300 text-xs font-bold hover:bg-stone-900 hover:text-white transition-colors">
+            멤버십 문의하기
+          </button>
+        </div>
+
+        <!-- Tier 2 (Best) -->
+        <div class="bg-stone-900 text-white rounded-3xl p-8 shadow-xl flex flex-col justify-between relative transform md:-translate-y-2">
+          <div class="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-brand-gold text-stone-950 text-[10px] font-bold tracking-wider font-eng">
+            MOST POPULAR
+          </div>
+          <div>
+            <div class="text-xs font-bold tracking-widest text-brand-sand font-eng">GOLD CARD</div>
+            <div class="font-gowun text-2xl font-bold text-white mt-2 mb-4">50만원권</div>
+            <ul class="space-y-2 text-xs text-stone-300 mb-6 font-serif-kr">
+              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-gold"></i> 전 시술 상시 15% 추가 할인</li>
+              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-gold"></i> 프리미엄 헤드스파 1회 무료 (8만원 상당)</li>
+              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-gold"></i> 홈케어 살롱 샴푸 증정</li>
+              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-gold"></i> 가족/지인 양도 가능</li>
+            </ul>
+          </div>
+          <button onclick="openReservationModal()" class="w-full py-3 rounded-xl bg-brand-gold text-stone-950 text-xs font-bold hover:bg-white transition-colors">
+            멤버십 문의하기
+          </button>
+        </div>
+
+        <!-- Tier 3 -->
+        <div class="bg-white rounded-3xl p-8 border border-stone-200 shadow-sm flex flex-col justify-between">
+          <div>
+            <div class="text-xs font-bold tracking-widest text-stone-500 font-eng">BLACK VIP</div>
+            <div class="font-gowun text-2xl font-bold text-stone-900 mt-2 mb-4">100만원권</div>
+            <ul class="space-y-2 text-xs text-stone-600 mb-6 font-serif-kr">
+              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-brown"></i> 전 시술 상시 20% 특별 할인</li>
+              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-brown"></i> VIP 독립 프라이빗 룸 우선 배정</li>
+              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-brown"></i> 풀코스 헤드스파 2회 제공</li>
+              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-brown"></i> 프리미엄 홈케어 세트 증정</li>
+            </ul>
+          </div>
+          <button onclick="openReservationModal()" class="w-full py-3 rounded-xl border border-stone-300 text-xs font-bold hover:bg-stone-900 hover:text-white transition-colors">
+            멤버십 문의하기
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ==================== 9. INSTAGRAM SECTION ==================== -->
+  <section class="py-20 bg-stone-50 border-t border-stone-200">
+    <div class="max-w-6xl mx-auto px-6 text-center">
+      
+      <div class="mb-10">
+        <h3 class="font-eng font-bold text-2xl tracking-[0.2em] text-stone-900">
+          # INSTAGRAM
+        </h3>
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6 mt-3 text-xs sm:text-sm text-stone-600 font-eng">
+          <a href="https://instagram.com" target="_blank" class="hover:text-stone-950 flex items-center gap-1.5 transition-colors">
+            <i class="fa-brands fa-instagram text-brand-brown text-base"></i>
+            <span>@ameu_official</span>
+          </a>
+          <span class="hidden sm:inline text-stone-300">|</span>
+          <a href="https://instagram.com" target="_blank" class="hover:text-stone-950 flex items-center gap-1.5 transition-colors">
+            <i class="fa-brands fa-instagram text-brand-brown text-base"></i>
+            <span>@ameu_collection</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3">
+        <div class="aspect-square rounded-xl overflow-hidden bg-stone-200 group relative cursor-pointer">
+          <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=400&q=80" alt="아미유 인스타 피드" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+          <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white">
+            <i class="fa-brands fa-instagram text-xl"></i>
+          </div>
+        </div>
+        <div class="aspect-square rounded-xl overflow-hidden bg-stone-200 group relative cursor-pointer">
+          <img src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&w=400&q=80" alt="아미유 인스타 피드" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+          <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white">
+            <i class="fa-brands fa-instagram text-xl"></i>
+          </div>
+        </div>
+        <div class="aspect-square rounded-xl overflow-hidden bg-stone-200 group relative cursor-pointer">
+          <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=400&q=80" alt="아미유 인스타 피드" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+          <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white">
+            <i class="fa-brands fa-instagram text-xl"></i>
+          </div>
+        </div>
+        <div class="aspect-square rounded-xl overflow-hidden bg-stone-200 group relative cursor-pointer">
+          <img src="https://images.unsplash.com/photo-1562322140-8baeececf3df?auto=format&fit=crop&w=400&q=80" alt="아미유 인스타 피드" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+          <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white">
+            <i class="fa-brands fa-instagram text-xl"></i>
+          </div>
+        </div>
+        <div class="aspect-square rounded-xl overflow-hidden bg-stone-200 group relative cursor-pointer">
+          <img src="https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?auto=format&fit=crop&w=400&q=80" alt="아미유 인스타 피드" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+          <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white">
+            <i class="fa-brands fa-instagram text-xl"></i>
+          </div>
+        </div>
+        <div class="aspect-square rounded-xl overflow-hidden bg-stone-200 group relative cursor-pointer">
+          <img src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?auto=format&fit=crop&w=400&q=80" alt="아미유 인스타 피드" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+          <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white">
+            <i class="fa-brands fa-instagram text-xl"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ==================== 10. FOOTER ==================== -->
+  <footer class="bg-stone-950 text-stone-400 py-16 border-t border-stone-800">
+    <div class="max-w-7xl mx-auto px-6">
+      
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+        <div class="md:col-span-2">
+          <img 
+            src="logo2.png" 
+            alt="아미유 헤어 로고" 
+            class="h-16 w-auto object-contain brightness-110 mb-4" 
+          />
+          <p class="text-xs text-stone-400 leading-relaxed max-w-md mb-6 font-serif-kr">
+            아미유 헤어(AMEU HAIR)는 프리미엄 1:1 맞춤 헤어 디자인과 프라이빗 힐링 스파 서비스를 제공하는 살롱입니다. 고객 한 분 한 분의 고유한 아름다움을 완성합니다.
+          </p>
+          <div class="text-[11px] text-stone-500 space-y-1">
+            <p><strong>미아사거리점:</strong> 서울특별시 강북구 미아사거리역 인근 | 네이버 예약 운영</p>
+            <p><strong>성신여대점:</strong> 서울특별시 성북구 성신여대입구역 인근 | 네이버 예약 운영</p>
+            <p>상호명: 아미유 헤어살롱 (AMEU HAIR) | MEU.COMPANY | 대표자: 홍길동 | 사업자등록번호: 000-00-00000</p>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="text-sm font-bold text-white font-eng tracking-wider uppercase mb-4">Salons & Booking</h4>
+          <ul class="space-y-2.5 text-xs">
+            <li>
+              <a href="https://map.naver.com/p/entry/place/1809226710?placePath=%2Fstylist" target="_blank" class="hover:text-brand-gold transition-colors flex items-center gap-1.5">
+                <i class="fa-solid fa-arrow-right text-[10px] text-emerald-500"></i>
+                <span>미아사거리점 네이버 예약</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://m.place.naver.com/hairshop/1423704026/stylist?entry=plt" target="_blank" class="hover:text-brand-gold transition-colors flex items-center gap-1.5">
+                <i class="fa-solid fa-arrow-right text-[10px] text-emerald-500"></i>
+                <span>성신여대점 네이버 예약</span>
+              </a>
+            </li>
+            <li><a href="#interior" class="hover:text-white transition-colors">살롱 인테리어 둘러보기</a></li>
+            <li><a href="#stylebook" class="hover:text-white transition-colors">시그니처 스타일북</a></li>
+            <li><a href="#membership" class="hover:text-white transition-colors">VIP 멤버십 안내</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-sm font-bold text-white font-eng tracking-wider uppercase mb-4">Customer Care</h4>
+          <p class="text-xs text-stone-400 mb-2">운영시간: 10:00 ~ 20:00</p>
+          <p class="text-xs text-stone-400 mb-4">시술 및 예약 문의는 네이버 톡톡 또는 각 매장 네이버 플레이스를 이용해 주시면 빠르게 답변드립니다.</p>
+          <div class="flex items-center gap-3 text-lg text-brand-sand">
+            <a href="https://instagram.com" target="_blank" class="hover:text-white"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" class="hover:text-white"><i class="fa-solid fa-comment"></i></a>
+            <a href="#" class="hover:text-white"><i class="fa-solid fa-phone"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="pt-8 border-t border-stone-800 flex flex-col sm:flex-row items-center justify-between text-[11px] text-stone-500 gap-4">
+        <p>&copy; 2026 AMEU HAIR SALON (아미유 헤어). All rights reserved.</p>
+        <div class="flex gap-4">
+          <a href="#" class="hover:underline">이용약관</a>
+          <a href="#" class="hover:underline">개인정보처리방침</a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+
+  <!-- ==================== 11. RESERVATION MODAL ==================== -->
+  <div id="reservationModal" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm hidden items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 relative shadow-2xl border border-stone-200">
+      
+      <button onclick="closeReservationModal()" class="absolute top-5 right-5 text-stone-400 hover:text-stone-800 text-xl">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <div class="text-center mb-6">
+        <span class="text-[11px] font-bold font-eng tracking-widest text-brand-brown uppercase">ONLINE RESERVATION</span>
+        <h3 class="font-gowun text-2xl font-bold text-stone-900 mt-1">예약하실 아미유 지점을 선택해주세요</h3>
+        <p class="text-xs text-stone-500 mt-1">디자이너별 실시간 스케줄 확인 및 네이버 예약으로 바로 연결됩니다.</p>
+      </div>
+
+      <div class="space-y-4">
+        
+        <!-- Option 1: 미아사거리점 -->
+        <a 
+          href="https://map.naver.com/p/entry/place/1809226710?placePath=%2Fstylist%3Ffrom%3Dmap%26fromPanelNum%3D1%26additionalHeight%3D76%26timestamp%3D202611091600%26locale%3Dko%26svcName%3Dmap_pcv5&c=15.00,0,0,0,dh" 
+          target="_blank" 
+          class="block p-5 rounded-2xl border-2 border-stone-200 hover:border-emerald-600 bg-stone-50/70 hover:bg-emerald-50/40 transition-all group"
+        >
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <div class="flex items-center gap-3">
+                <div class="w-11 h-11 rounded-xl bg-emerald-600 text-white flex items-center justify-center text-lg font-bold">
+                  <i class="fa-solid fa-scissors"></i>
+                </div>
+                <div>
+                  <h4 class="font-bold text-stone-900 text-base group-hover:text-emerald-700 transition-colors font-gowun">
+                    아미유 헤어 미아사거리점
+                  </h4>
+                  <p class="text-xs text-stone-500 mt-0.5">미아사거리역 인근 · 첫방문 50% 혜택</p>
+                </div>
+              </div>
+              <span class="text-emerald-600 text-xs font-bold flex items-center gap-1 font-eng px-2.5 py-1 bg-emerald-50 rounded-lg">
+                <span>네이버 예약</span>
+                <i class="fa-solid fa-arrow-right text-[10px]"></i>
+              </span>
+            </div>
+            <div class="flex items-center justify-between text-xs text-stone-500 pt-2 border-t border-stone-200">
+              <a href="tel:02-980-0951" class="hover:text-stone-900 flex items-center gap-1"><i class="fa-solid fa-phone text-[#4A3B32]"></i> 02-980-0951</a>
+              <a href="https://www.instagram.com/ameu_ms" target="_blank" rel="noopener noreferrer" class="hover:text-rose-500 flex items-center gap-1"><i class="fa-brands fa-instagram text-rose-500"></i> @ameu_ms</a>
+            </div>
+          </div>
+        </a>
+
+        <!-- Option 2: 성신여대점 -->
+        <a 
+          href="https://m.place.naver.com/hairshop/1423704026/stylist?entry=plt&utm_source=ig&utm_medium=social&utm_content=link_in_bio" 
+          target="_blank" 
+          class="block p-5 rounded-2xl border-2 border-stone-200 hover:border-emerald-600 bg-stone-50/70 hover:bg-emerald-50/40 transition-all group"
+        >
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-3">
+              <div class="w-11 h-11 rounded-xl bg-stone-900 text-brand-gold flex items-center justify-center text-lg font-bold">
+                <i class="fa-solid fa-wand-magic-sparkles"></i>
+              </div>
+              <div>
+                <h4 class="font-bold text-stone-900 text-base group-hover:text-emerald-700 transition-colors font-gowun">
+                  아미유 헤어 성신여대점
+                </h4>
+                <p class="text-xs text-stone-500 mt-0.5">성신여대입구역 인근 · 네이버 스마트예약 (첫방문 50%)</p>
+              </div>
+            </div>
+            <span class="text-emerald-600 text-sm font-bold flex items-center gap-1 font-eng">
+              <span>예약하기</span>
+              <i class="fa-solid fa-arrow-right text-xs group-hover:translate-x-1 transition-transform"></i>
+            </span>
+          </div>
+        </a>
+
+      </div>
+
+      <div class="mt-6 pt-4 border-t border-stone-100 text-center">
+        <p class="text-[11px] text-stone-400">
+          * 당일 예약 또는 기타 문의사항은 각 매장 네이버 플레이스 번호로 유선 연락 부탁드립니다.
+        </p>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- ==================== JAVASCRIPT ==================== -->
+  <script>
+    // 3D Volumetric Studio Light Flicker Animation
+    function runStudioFlicker() {
+      const beams = document.getElementById('lightBeams');
+      const bulb1 = document.getElementById('bulb1');
+      const bulb2 = document.getElementById('bulb2');
+      const bulb3 = document.getElementById('bulb3');
+
+      function setLight(state) {
+        if (!beams || !bulb1 || !bulb2 || !bulb3) return;
+        if (state) {
+          beams.style.opacity = '1';
+          bulb1.style.background = '#ffffff';
+          bulb1.style.boxShadow = '0 0 20px 8px rgba(255,255,255,0.9), inset 0 0 8px #fff';
+          bulb2.style.background = '#ffffff';
+          bulb2.style.boxShadow = '0 0 20px 8px rgba(255,255,255,0.9), inset 0 0 8px #fff';
+          bulb3.style.background = '#ffffff';
+          bulb3.style.boxShadow = '0 0 20px 8px rgba(255,255,255,0.9), inset 0 0 8px #fff';
+        } else {
+          beams.style.opacity = '0';
+          bulb1.style.background = '#111';
+          bulb1.style.boxShadow = 'none';
+          bulb2.style.background = '#111';
+          bulb2.style.boxShadow = 'none';
+          bulb3.style.background = '#111';
+          bulb3.style.boxShadow = 'none';
+        }
+      }
+
+      setLight(false);
+      setTimeout(() => setLight(true), 500);
+      setTimeout(() => setLight(false), 600);
+      setTimeout(() => setLight(true), 900);
+      setTimeout(() => setLight(false), 950);
+      setTimeout(() => setLight(true), 1150);
+      setTimeout(() => setLight(false), 1190);
+      setTimeout(() => setLight(true), 1250);
+      setTimeout(() => setLight(false), 1290);
+      setTimeout(() => setLight(true), 1690);
+    }
+
+    // First Visit Event Popup
+    function openEventPopup(branch = 'mia') {
+      const popup = document.getElementById('firstVisitPopup');
+      if (popup) {
+        popup.classList.remove('hidden');
+        popup.classList.add('flex');
+        switchEventTab(branch);
+      }
+    }
+
+    function closeEventPopup() {
+      const popup = document.getElementById('firstVisitPopup');
+      if (popup) {
+        popup.classList.add('hidden');
+        popup.classList.remove('flex');
+        const dontShow = document.getElementById('dontShowToday');
+        if (dontShow && dontShow.checked) {
+          localStorage.setItem('ameu_hide_event_popup', new Date().toDateString());
+        }
+      }
+    }
+
+    function switchEventTab(branch) {
+      const btnMia = document.getElementById('tabBtnMia');
+      const btnSungshin = document.getElementById('tabBtnSungshin');
+      const contentMia = document.getElementById('eventContentMia');
+      const contentSungshin = document.getElementById('eventContentSungshin');
+      const bookingLink = document.getElementById('eventBookingLink');
+
+      if (!btnMia || !btnSungshin) return;
+
+      if (branch === 'mia') {
+        btnMia.className = 'flex-1 py-2 rounded-xl text-xs font-bold transition-all bg-emerald-600 text-white shadow-sm';
+        btnSungshin.className = 'flex-1 py-2 rounded-xl text-xs font-bold transition-all bg-stone-100 text-stone-600 hover:bg-stone-200';
+        if (contentMia) contentMia.classList.remove('hidden');
+        if (contentSungshin) contentSungshin.classList.add('hidden');
+        if (bookingLink) {
+          bookingLink.href = 'https://map.naver.com/p/entry/place/1809226710?placePath=%2Fstylist';
+          bookingLink.innerHTML = '<span>미아사거리점 50% 예약하기</span> <i class="fa-solid fa-arrow-right text-xs"></i>';
+        }
+      } else {
+        btnSungshin.className = 'flex-1 py-2 rounded-xl text-xs font-bold transition-all bg-emerald-600 text-white shadow-sm';
+        btnMia.className = 'flex-1 py-2 rounded-xl text-xs font-bold transition-all bg-stone-100 text-stone-600 hover:bg-stone-200';
+        if (contentMia) contentMia.classList.add('hidden');
+        if (contentSungshin) contentSungshin.classList.remove('hidden');
+        if (bookingLink) {
+          bookingLink.href = 'https://m.place.naver.com/hairshop/1423704026/stylist?entry=plt';
+          bookingLink.innerHTML = '<span>성신여대점 50% 예약하기</span> <i class="fa-solid fa-arrow-right text-xs"></i>';
+        }
+      }
+    }
+
+    // Reservation Modal
+    function openReservationModal() {
+      const modal = document.getElementById('reservationModal');
+      if (modal) {
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+      }
+    }
+
+    function closeReservationModal() {
+      const modal = document.getElementById('reservationModal');
+      if (modal) {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+      }
+    }
+
+    function scrollToSection(id) {
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+
+    // ==================== INTERACTIVE HAIRSTYLE RAIL GALLERY CONTROLLER ====================
+    const railStylesData = [
+      {
+        tag: "01 · SIGNATURE SLEEK CUT",
+        title: "시그니처 슬릭 레이어드컷",
+        desc: "얼굴선을 가볍고 세련되게 감싸는 아미유 대표 맞춤형 슬릭 실루엣 · 모질 개선 슬릭 케어"
+      },
+      {
+        tag: "02 · ASH BEIGE WAVE",
+        title: "애쉬 베이지 실키 웨이브",
+        desc: "붉은 기를 완벽 차단한 몽환적인 톤과 탄력 있는 여신 실크 웨이브 · 퍼스널 컬러 맞춤"
+      },
+      {
+        tag: "03 · FEMININE SEE-THROUGH BANG",
+        title: "페미닌 시스루뱅 롱웨이브",
+        desc: "청순한 시스루뱅과 자연스럽게 흐르는 에어리 롱 텍스처 · 사이드뱅 연결"
+      },
+      {
+        tag: "04 · SOFT C-CURL MEDIUM",
+        title: "소프트 C컬 미디움 레이어드",
+        desc: "손질이 가장 편안한 데일리 럭셔리 C컬 & 바운스 실루엣 · 뿌리 볼륨펌 결합"
+      },
+      {
+        tag: "05 · TASSEL BOB & SEMI-HUSH",
+        title: "태슬 단발 & 세미 허쉬컷",
+        desc: "트렌디하고 감각적인 라인감의 태슬 커트와 시크한 텍스처 · 샤프한 끝선 연출"
+      },
+      {
+        tag: "06 · NATURAL BUILD PERM",
+        title: "내추럴 페미닌 빌드펌",
+        desc: "S컬과 C컬의 조화로 우아하고 풍성한 볼륨을 완성하는 대표 디자인 · 두상 맞춤"
+      },
+      {
+        tag: "07 · GODDESS VOLUME WAVE",
+        title: "엘레강스 여신 롱웨이브",
+        desc: "화사하고 고급스러운 무드를 극대화하는 아미유 시그니처 롱웨이브 · 윤기 코팅"
+      },
+      {
+        tag: "08 · CLASSIC LONG C-CURL",
+        title: "클래식 C컬 롱 레이어드",
+        desc: "차분하면서도 우아한 흐름으로 완성하는 롱헤어 필수 디자인 · 윤기 실크 코팅"
+      },
+      {
+        tag: "09 · MODERN CHIC BOB",
+        title: "모던 보브 단발펌",
+        desc: "목선을 길어 보이게 하는 단정한 볼륨감과 클래식 보브 실루엣 · 두상 보정 볼륨"
+      },
+      {
+        tag: "10 · GRACE VOLUME PERM",
+        title: "그레이스 볼륨 롱펌",
+        desc: "부드럽고 로맨틱한 웨이브로 세련된 분위기를 연출하는 프리미엄 펌 · 스타일링 쉬운 컬"
+      }
+    ];
+
+    let currentRailIdx = 0;
+    let railAutoplayTimer = null;
+
+    function focusRailItem(idx) {
+      currentRailIdx = idx;
+      const cards = document.querySelectorAll('.rail-item-card');
+      cards.forEach((card, i) => {
+        if (i === idx) {
+          card.classList.add('active');
+          card.classList.remove('resting');
+        } else {
+          card.classList.remove('active');
+          card.classList.add('resting');
+        }
+      });
+
+      const data = railStylesData[idx];
+      if (data) {
+        const tagEl = document.getElementById('railActiveTag');
+        const titleEl = document.getElementById('railActiveTitle');
+        const descEl = document.getElementById('railActiveDesc');
+        if (tagEl) tagEl.innerText = data.tag;
+        if (titleEl) titleEl.innerText = data.title;
+        if (descEl) descEl.innerText = data.desc;
+      }
+    }
+
+    function nextRailItem() {
+      const next = (currentRailIdx + 1) % railStylesData.length;
+      focusRailItem(next);
+      scrollRailToItem(next);
+    }
+
+    function prevRailItem() {
+      const prev = (currentRailIdx - 1 + railStylesData.length) % railStylesData.length;
+      focusRailItem(prev);
+      scrollRailToItem(prev);
+    }
+
+    // 버그 수정 핵심: window 스크롤을 건드리지 않고, 오직 레일 트랙(railTrack)의 가로 스크롤만 이동시킴!
+    function scrollRailToItem(idx) {
+      const track = document.getElementById('railTrack');
+      const cards = document.querySelectorAll('.rail-item-card');
+      if (track && cards[idx]) {
+        const card = cards[idx];
+        const targetLeft = card.offsetLeft - (track.clientWidth / 2) + (card.clientWidth / 2);
+        track.scrollTo({ left: targetLeft, behavior: 'smooth' });
+      }
+    }
+
+    function bookCurrentRailStyle() {
+      const current = railStylesData[currentRailIdx];
+      openReservationModal();
+    }
+
+    // 사용자가 페이지 아래로 스크롤했을 때는 자동 회전이 실행되지 않도록 화면 가시성 체크
+    function startRailAutoplay() {
+      stopRailAutoplay();
+      railAutoplayTimer = setInterval(() => {
+        const track = document.getElementById('railTrack');
+        if (track) {
+          const rect = track.getBoundingClientRect();
+          // 레일 영역이 브라우저 화면 안에 있을 때만 자동 넘김
+          if (rect.bottom > 80 && rect.top < window.innerHeight - 80) {
+            nextRailItem();
+          }
+        }
+      }, 3500);
+    }
+
+    function stopRailAutoplay() {
+      if (railAutoplayTimer) {
+        clearInterval(railAutoplayTimer);
+        railAutoplayTimer = null;
+      }
+    }
+
+    // Init
+    document.addEventListener('DOMContentLoaded', () => {
+      runStudioFlicker();
+
+      // Check popup
+      const hideDate = localStorage.getItem('ameu_hide_event_popup');
+      if (hideDate !== new Date().toDateString()) {
+        setTimeout(() => {
+          openEventPopup('mia');
+        }, 700);
+      }
+
+      // Attach pause on rail hover
+      const track = document.getElementById('railTrack');
+      if (track) {
+        track.addEventListener('mouseenter', stopRailAutoplay);
+        track.addEventListener('mouseleave', startRailAutoplay);
+        track.addEventListener('touchstart', stopRailAutoplay, { passive: true });
+      }
+      startRailAutoplay();
+    });
+  </script>
+</body>
+</html>
