@@ -4,7 +4,7 @@
 
 @layer base {
   body {
-    @apply bg-white text-stone-800 antialiased selection:bg-brand-sand selection:text-stone-900;
+    @apply bg-white text-stone-800 antialiased selection:bg-[#DFD7CD] selection:text-stone-900;
     font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
   }
 }
@@ -19,4 +19,45 @@
 
 .font-eng {
   font-family: 'Montserrat', sans-serif;
+}
+
+/* Interactive Hairstyle Rail Styles */
+.rail-perspective-stage {
+  perspective: 1200px;
+  transform-style: preserve-3d;
+}
+
+.rail-hanger-rod {
+  background: linear-gradient(180deg, #666 0%, #eee 40%, #bbb 60%, #333 100%);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.6), 0 0 20px rgba(197, 168, 128, 0.2);
+}
+
+.rail-item-card {
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.45s ease, opacity 0.35s ease;
+  transform-origin: top center;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.rail-item-card.resting {
+  transform: perspective(1100px) rotateY(-50deg) scale(0.92);
+  opacity: 0.75;
+  filter: brightness(0.85);
+}
+
+.rail-item-card.active, .rail-item-card:hover {
+  transform: perspective(1100px) rotateY(0deg) scale(1.05) translateZ(30px);
+  opacity: 1;
+  filter: brightness(1.05);
+  z-index: 40 !important;
+  box-shadow: 0 20px 45px -10px rgba(0,0,0,0.8), 0 0 35px rgba(197, 168, 128, 0.35);
+}
+
+.rail-scroll-track::-webkit-scrollbar {
+  display: none;
+}
+
+.rail-scroll-track {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
