@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
 import { RailGarment } from "@/components/ui/product-rail-gallery";
@@ -89,6 +89,12 @@ const HAIR_COLLECTION_ITEMS: RailGarment[] = [
 ];
 
 export default function Hero({ onOpenReservation, onOpenEvent }: HeroProps) {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   return (
     <section className="relative w-full bg-stone-950 text-stone-100 overflow-hidden pt-12 pb-20 border-b border-stone-800">
       {/* 백그라운드 앰비언트 글로우 */}
@@ -150,31 +156,37 @@ export default function Hero({ onOpenReservation, onOpenEvent }: HeroProps) {
             </p>
           </div>
 
-          <ClothingRailHero
-            items={HAIR_COLLECTION_ITEMS}
-            hanger="matte"
-            eyebrow="2026 AMEU SIGNATURE COLLECTION"
-            heading="살롱 레일에 걸린 아미유 대표 디자인"
-            caption="레일을 터치하거나 옷걸이를 살짝 넘겨보면 정면 디자인을 감상하실 수 있습니다."
-            autoplay={true}
-            interval={3200}
-            labels={{
-              front: "정면 보기",
-              back: "전체 무드",
-              close: "닫기",
-              show: "자세히 보기",
-            }}
-            action={
-              <button
-                type="button"
-                onClick={onOpenReservation}
-                className="inline-flex items-center gap-2.5 rounded-full bg-[#DFD7CD] px-6 py-3 text-xs sm:text-sm font-bold tracking-wider text-stone-950 uppercase shadow-lg hover:bg-white hover:scale-105 active:scale-95 transition-all"
-              >
-                <span>이 스타일로 실시간 예약하기</span>
-                <i className="fa-solid fa-calendar-check" />
-              </button>
-            }
-          />
+          {mounted ? (
+            <ClothingRailHero
+              items={HAIR_COLLECTION_ITEMS}
+              hanger="matte"
+              eyebrow="2026 AMEU SIGNATURE COLLECTION"
+              heading="살롱 레일에 걸린 아미유 대표 디자인"
+              caption="레일을 터치하거나 옷걸이를 살짝 넘겨보면 정면 디자인을 감상하실 수 있습니다."
+              autoplay={true}
+              interval={3200}
+              labels={{
+                front: "정면 보기",
+                back: "전체 무드",
+                close: "닫기",
+                show: "자세히 보기",
+              }}
+              action={
+                <button
+                  type="button"
+                  onClick={onOpenReservation}
+                  className="inline-flex items-center gap-2.5 rounded-full bg-[#DFD7CD] px-6 py-3 text-xs sm:text-sm font-bold tracking-wider text-stone-950 uppercase shadow-lg hover:bg-white hover:scale-105 active:scale-95 transition-all"
+                >
+                  <span>이 스타일로 실시간 예약하기</span>
+                  <i className="fa-solid fa-calendar-check" />
+                </button>
+              }
+            />
+          ) : (
+            <div className="h-96 flex items-center justify-center text-stone-500 text-sm">
+              스타일 갤러리를 불러오는 중입니다...
+            </div>
+          )}
         </div>
 
         {/* 5. 실시간 예약 & 안내 CTA 버튼 */}
